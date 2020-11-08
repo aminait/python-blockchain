@@ -57,7 +57,7 @@ class Block:
         a block hash is found that meets the leading 0's proof of work
         requirements.
         """
-        timestamp = time.time_ns()
+        timestamp = time.time()
         last_hash = last_block.hash
         difficulty = Block.adjust_difficulty(last_block, timestamp)
         nonce = 0
@@ -65,7 +65,7 @@ class Block:
 
         while hex_to_binary(hash)[0:difficulty] != '0' * difficulty:
             nonce += 1 
-            timestamp = time.time_ns()
+            timestamp = time.time()
             hash = crypto_hash(timestamp, last_hash, data, difficulty, nonce)
           
 
@@ -83,6 +83,13 @@ class Block:
         #     data=GENESIS_DATA['data']
         #     )
         return Block(**GENESIS_DATA)
+    
+    @staticmethod
+    def from_json(block_json):
+        """
+        Deserialize a block's json representation back into a block instance.
+        """
+        return Block(**block_json)
     
     @staticmethod
     def adjust_difficulty(last_block, new_timestamp):
