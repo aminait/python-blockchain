@@ -1,9 +1,9 @@
 import time
 import pytest
 
-from blockchain.block import Block, GENESIS_DATA
-from config import MINE_RATE, SECONDS
-from util.hex_to_binary import hex_to_binary
+from backend.blockchain.block import Block, GENESIS_DATA
+from backend.config import MINE_RATE, SECONDS
+from backend.util.hex_to_binary import hex_to_binary
 
 def test_mine_block():
     last_block = Block.genesis()
@@ -37,7 +37,7 @@ def test_slowly_mined_block():
 
 def test_mined_block_difficulty_limits_at_1():
     last_block = Block(
-        time.time_ns(),
+        time.time(),
         'test_last_hash',
         'test_hash',
         'test_data',
