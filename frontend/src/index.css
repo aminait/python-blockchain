@@ -33,20 +33,16 @@ body {
   padding: 5%;
 }
 
-.Blockchain,
-.ConductTransaction,
-.TransactionPool {
+.Blockchain, .ConductTransaction, .TransactionPool {
   margin: 10%;
   margin-top: 5%;
 }
 
-a,
-a:hover {
+a, a:hover {
   color: #e66;
   text-decoration: underline;
 }
 
-input,
-button {
+input, button {
   color: black;
 }
